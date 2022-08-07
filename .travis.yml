@@ -10,14 +10,14 @@ script:
   - docker run -e CI=true ravinder/react-test npm run test
 
 after_success:
-  - docker build -t ravinder/multi-client ./client
-  - docker build -t ravinder/multi-server ./server
-  - docker build -t ravinder/multi-nginx ./nginx
-  - docker build -t ravinder/multi-worker ./worker
+  - docker build -t ravinderdock/multi-client ./client
+  - docker build -t ravinderdock/multi-server ./server
+  - docker build -t ravinderdock/multi-nginx ./nginx
+  - docker build -t ravinderdock/multi-worker ./worker
   # log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # images push to dockerhub
-  - docker push ravinder/multi-client
-  - docker push ravinder/multi-server
-  - docker push ravinder/multi-nginx
-  - docker push ravinder/multi-worker
+  - docker push ravinderdock/multi-client
+  - docker push ravinderdock/multi-server
+  - docker push ravinderdock/multi-nginx
+  - docker push ravinderdock/multi-worker
